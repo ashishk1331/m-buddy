@@ -2,8 +2,6 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
-import Header from "@/components/root/Header";
-import { Flex } from "@radix-ui/themes";
 import { twJoin } from "tailwind-merge";
 
 const font = Poppins({
@@ -21,12 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={twJoin(font.className, "h-screen")}>
         <Theme className="h-full w-full">
-          <Flex align="center" justify="center" gap="3" className="h-full">
-            <Header />
-            <Flex direction="column" className="m-8 w-full h-full">
-              {children}
-            </Flex>
-          </Flex>
+          {children}
         </Theme>
       </body>
     </html>

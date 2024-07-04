@@ -2,6 +2,7 @@
 import { Text, Heading, Flex, Button } from "@radix-ui/themes";
 import { PencilSimple, SignOut } from "@phosphor-icons/react";
 import Stats from "@/components/me/Stats";
+import Link from "next/link";
 
 export default function (props) {
 	return (
@@ -12,14 +13,18 @@ export default function (props) {
 					<Text size="2">Personal details</Text>
 				</Flex>
 				<Flex gap="3" align="center">
-					<Button>
-						<PencilSimple weight="fill" />
-						Edit
-					</Button>
-					<Button color="red">
-						<SignOut weight="bold" />
-						Log out
-					</Button>
+					<Link href="/app/me/edit">
+						<Button>
+							<PencilSimple weight="fill" />
+							Edit
+						</Button>
+					</Link>
+					<Link href="/">
+						<Button color="red">
+							<SignOut weight="bold" />
+							Log out
+						</Button>
+					</Link>
 				</Flex>
 			</Flex>
 			<Stats />

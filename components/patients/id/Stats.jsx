@@ -2,7 +2,7 @@
 import { Paperclip } from "@phosphor-icons/react";
 import { twMerge } from "tailwind-merge";
 
-export default function Example({ data }) {
+export default function({ data }) {
 	let stats = [],
 		index = 0;
 	for (let item in data) {
@@ -13,7 +13,7 @@ export default function Example({ data }) {
 	}
 
 	return (
-		<div className="overflow-y-scroll">
+		<div className="overflow-y-scroll mb-8">
 			<div className="mt-6">
 				<dl className="divide-y divide-gray-100">{stats}</dl>
 			</div>
@@ -55,11 +55,30 @@ function Item({ field, value, index }) {
 			)}
 		>
 			<dt className="text-sm font-medium leading-6 text-gray-900">
-				{field}
+				{field !== "UHID" ? captilize(field) : field}
 			</dt>
 			<dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
 				{value}
 			</dd>
 		</div>
 	);
+}
+
+function captilize(string){
+	let words = [];
+	let temp = "";
+	for(let char of string.split("")){
+		if(char.match(/[A-Z]/gm)){
+			if(temp.length > 0){
+				words.push(temp[0].toUpperCase() + temp.substring(1));
+			}
+			temp = char;
+		} else {
+			temp += char;
+		}
+	}
+	if(temp.length > 0){
+		words.push(temp[0].toUpperCase() + temp.substring(1));
+	}
+	return words.join(" ")
 }

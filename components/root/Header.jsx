@@ -27,16 +27,16 @@ export default function (props) {
 			</Box>
 
 			<ItemGroup className="text-zinc-800">
-				<Link href="/">
+				<Link href="/app">
 					<Item icon={<House {...icon_props} />}>Dashboard</Item>
 				</Link>
-				<Link href="/patients">
+				<Link href="/app/patients">
 					<Item icon={<Users {...icon_props} />}>Patients</Item>
 				</Link>
 			</ItemGroup>
 
 			<ItemGroup className="mt-auto">
-				<Link href="/me">
+				<Link href="/app/me">
 					<Item icon={<Avatar size="2" fallback="r" />}>
 						R. Singh
 					</Item>

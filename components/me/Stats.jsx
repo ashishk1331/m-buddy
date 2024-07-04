@@ -1,17 +1,24 @@
 "use client";
 import { Paperclip } from "@phosphor-icons/react";
+import { userStore } from "@/stores/user.store.js";
+import { shallow } from "zustand/shallow";
 
-export default function() {
+export default function () {
+    const [firstName, lastName, email] = userStore(
+        (state) => [state.firstName, state.lastName, state.email],
+        shallow,
+    );
+
     return (
         <div className="overflow-y-scroll">
             <div className="mt-6">
                 <dl className="divide-y divide-gray-100">
-                    <Item field="Full name" value="Ravinder Singh" />
-                    <Item field="Post" value="Bill Manager" />
                     <Item
-                        field="Email address"
-                        value="ravisingh123@gmail.com"
+                        field="Full name"
+                        value={firstName + " " + lastName}
                     />
+                    <Item field="Post" value="Bill Manager" />
+                    <Item field="Email address" value={email} />
                     <Item
                         field="Attachments"
                         value={
